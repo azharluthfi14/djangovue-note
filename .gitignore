@@ -1,1 +1,4 @@
+.vscode
 /backend/env
+backend/core/__pycache__
+db.sqlite3
