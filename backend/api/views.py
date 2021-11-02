@@ -8,7 +8,7 @@ from .models import Note
 
 class ListNote(APIView):
     def get(self, request, format=None):
-        notes = Note.objects.all()
+        notes = Note.objects.all().order_by('-created_at')
         serializer = NoteSerializer(notes, many=True)
         return Response(serializer.data)
 

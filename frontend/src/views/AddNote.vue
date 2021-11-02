@@ -1,25 +1,23 @@
 <template>
-  <div class="flex h-screen bg-white">
+  <div class="flex h-screen bg-gray-100">
     <div class="flex-1 h-full overflow-x-hidden overflow-y-auto">
       <Header />
-      <main class="mt-5 lg:px-48 sm:px-5 h-full">
-        <Notes />
+      <main class="mt-5 lg:px-48 sm:px-5">
+        <Add />
       </main>
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from "../components/Sidebar/Sidebar.vue";
 import Header from "../components/Navbar/Navbar.vue";
-import Notes from "../components/Note/Notes.vue";
+import Add from "../components/Note/Add.vue";
 
 export default {
-  name: "Dashboard",
+  name: "AddNote",
   components: {
-    Sidebar,
     Header,
-    Notes,
+    Add,
   },
 };
 </script>
