@@ -1,10 +1,15 @@
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"]
+      },
+      colors: {
+        'dark-first': '#121212',
+        'dark-second': '#1f1f1f',
+        'dark-third': '#2d2d2d'
       }
     },
     container: {
@@ -15,9 +20,12 @@ module.exports = {
         xl: "5rem",
       },
     },
+
   },
   variants: {
-    extend: {},
+    extend: {
+      display: ["group-hover"],
+    },
   },
   plugins: [
     require('@tailwindcss/forms')
