@@ -1,49 +1,38 @@
 <template>
   <div>
-    <div
-      v-masonry
-      transition-duration="0.3s"
-      item-selector=".note"
-      v-if="notes.length"
-    >
+    <skeleton-loader :count="6" v-if="loading" />
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2" v-else-if="notes.length">
       <router-link
-        v-masonry-tile
-        class="note"
         v-for="(note, index) in notes"
         :key="index"
         :to="{ name: 'DetailNote', params: { id: note.id } }"
+        class="
+          bg-white
+          hover:bg-gray-100
+          dark:bg-dark-second
+          dark:text-gray-200
+          dark:border-transparent
+          dark:hover:bg-dark-third
+          dark:shadow-lg
+          shadow-md
+          p-7
+          m-3
+          rounded-lg
+          border
+        "
       >
-        <div
+        <h1
           class="
-            bg-white
-            hover:bg-gray-100
-            dark:bg-dark-second
-            dark:text-gray-200
-            dark:border-transparent
-            dark:hover:bg-dark-third
-            dark:shadow-lg
-            shadow-md
-            p-7
-            m-3
-            lg:max-w-md
-            md:max-w-sm
-            rounded-lg
-            border
+            font-semibold
+            text-indigo-500
+            dark:text-indigo-400
+            text-lg
+            mb-4
           "
         >
-          <h1
-            class="
-              font-semibold
-              text-indigo-500
-              dark:text-indigo-400
-              text-lg
-              mb-4
-            "
-          >
-            {{ note.title }}
-          </h1>
-          <p>{{ note.description }}</p>
-        </div>
+          {{ note.title }}
+        </h1>
+        <p>{{ note.description }}</p>
       </router-link>
     </div>
     <div v-else class="flex justify-center mt-20 align-middle items-center">
@@ -58,10 +47,15 @@
 <script>
 import axios from "axios";
 import { useToast } from "vue-toastification";
+import SkeletonLoader from "../Skeleton/SkeletonLoader.vue";
 export default {
+  components: {
+    SkeletonLoader,
+  },
   data() {
     return {
       notes: [],
+      loading: false,
     };
   },
 
@@ -70,13 +64,18 @@ export default {
   },
   methods: {
     async getNotes() {
+      this.loading = true;
       await axios
         .get("api/v1/note/")
         .then((response) => {
-          this.notes = response.data;
+          setTimeout(() => {
+            this.notes = response.data;
+            this.loading = false;
+          });
         })
         .catch((error) => {
           console.error(error);
+          this.loading = true;
         });
     },
   },

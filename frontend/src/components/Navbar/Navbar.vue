@@ -11,19 +11,27 @@
     "
   >
     <div class="flex justify-between items-center py-5 px-8">
-      <router-link :to="{ name: 'Dashboard' }">
-        <h1
-          class="
-            font-semibold
-            text-indigo-500
-            inline-block
-            tracking-wide
-            text-2xl
-          "
-        >
-          Mnotes
-        </h1>
-      </router-link>
+      <div class="flex items-center justify-between">
+        <img
+          class="w-12 h-12 mr-2 items-center"
+          src="../../assets/img/logo-m.svg"
+          alt=""
+        />
+        <router-link :to="{ name: 'Dashboard' }">
+          <h1
+            class="
+              font-semibold
+              text-indigo-500
+              dark:text-white
+              inline-block
+              tracking-wide
+              text-2xl
+            "
+          >
+            Mnotes
+          </h1>
+        </router-link>
+      </div>
       <nav class="flex gap-3">
         <button
           @click="toggleTheme"
