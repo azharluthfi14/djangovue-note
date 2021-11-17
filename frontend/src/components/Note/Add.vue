@@ -67,9 +67,10 @@
           bg-indigo-600
           hover:bg-indigo-700
           focus:outline-none
-          focus:ring-2
+          focus:ring-1
           focus:ring-offset-2
           focus:ring-indigo-500
+          dark:focus:ring-offset-transparent dark:focus:ring-indigo-300
         "
         @click="submitNote"
       >
@@ -89,11 +90,18 @@ export default {
       note: {},
     };
   },
+  setup() {
+    const toast = useToast();
+    return { toast };
+  },
   methods: {
     async submitNote() {
       await axios
         .post("api/v1/note/", this.note)
         .then((response) => {
+          this.toast.success("Note created !", {
+            position: "bottom-right",
+          });
           this.$router.push({ name: "Dashboard" });
         })
         .catch((error) => {

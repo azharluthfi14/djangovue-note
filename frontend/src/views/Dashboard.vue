@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen bg-blue-50 dark:bg-dark-first">
+  <div class="flex h-screen bg-gray-200 dark:bg-dark-first">
     <div class="flex-1 h-full overflow-x-hidden overflow-y-auto">
       <Header />
       <main class="mt-10 min-h-screen lg:mx-40 md:mx-10 sm:mx-10">

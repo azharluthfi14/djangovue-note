@@ -3,7 +3,6 @@
     class="
       p-6
       bg-white
-      border
       dark:bg-dark-second dark:border-transparent
       rounded-md
       mx-auto

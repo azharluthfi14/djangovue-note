@@ -20,7 +20,7 @@
         <router-link :to="{ name: 'Dashboard' }">
           <h1
             class="
-              font-semibold
+              font-bold
               text-indigo-500
               dark:text-white
               inline-block
@@ -55,18 +55,23 @@
           class="
             py-3
             px-7
+            font-semibold
             border border-transparent
             rounded-md
             text-white
             bg-indigo-600
             hover:bg-indigo-700
             focus:outline-none
-            focus:ring-2
+            focus:ring-1
             focus:ring-offset-2
             focus:ring-indigo-500
+            dark:focus:ring-offset-transparent dark:focus:ring-indigo-300
+            flex
+            items-center
           "
           :to="{ name: 'AddNote' }"
         >
+          <span class="material-icons mr-2"> add_circle </span>
           Create Note
         </router-link>
       </nav>

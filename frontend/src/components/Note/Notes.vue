@@ -18,7 +18,6 @@
           p-7
           m-3
           rounded-lg
-          border
         "
       >
         <h1
@@ -48,6 +47,7 @@
 import axios from "axios";
 import { useToast } from "vue-toastification";
 import SkeletonLoader from "../Skeleton/SkeletonLoader.vue";
+
 export default {
   components: {
     SkeletonLoader,
@@ -58,7 +58,10 @@ export default {
       loading: false,
     };
   },
-
+  setup() {
+    const toast = useToast();
+    return { toast };
+  },
   created() {
     this.getNotes();
   },
@@ -76,6 +79,12 @@ export default {
         .catch((error) => {
           console.error(error);
           this.loading = true;
+          setTimeout(() => {
+            this.toast.error("Something wrong", {
+              timeout: false,
+              position: "bottom-right",
+            });
+          }, 500);
         });
     },
   },
